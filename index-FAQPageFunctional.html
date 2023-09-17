@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Page Functional</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-X9f3Rv4G1WdZm5CTwXn6n5x5iANVWg6DvFZJw5qsAg5P5Lq5Fo5f5u5a5z5u5g5h5" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <div class="container">
+        <!--1 //create root div with an id  -->
+        <h2>Frequently Asked Questions (FAQ)</h2>
+     
+        <div id="root"></div> 
+    </div>
+
+
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel"> // 3 babel here
+
+function FAQItem({question,answer,index}){
+
+return(
+  
+<div class="accordion accordion-flush" id="accordionFlushExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id={`flush-heading${index}`}>
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={`#flush-collapse${index}`} aria-expanded="ture" aria-controls={`flush-collapse${index}`}>
+          {question}
+        </button>
+      </h2>
+      <div id={`flush-collapse${index}`} class="accordion-collapse collapse" aria-labelledby={`flush-heading${index}`} data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">
+          {answer}
+        </div>
+      </div>
+    </div>
+    
+  </div>  
+             
+  );  
+}
+
+function FAQ(){
+  let faqData=[
+  {
+      "question": "1.How do I book a trip on your website?",
+      "answer": "To book a trip with us, simply visit our homepage and use the search bar to enter your destination, travel dates, and other preferences. Browse the available options, select the one that suits you best, and follow the prompts to complete the booking process."
+    },
+    {
+      "question": "2.Can I make changes to my booking after it's confirmed?",
+      "answer": "Yes, you can make changes to your booking depending on the airline, hotel, or travel provider's policies. Some changes may incur fees, while others may be allowed free of charge. Contact our customer support team for assistance with modifying your booking."
+    },
+    {
+      "question": "3.What payment methods do you accept?",
+      "answer": "We accept major credit and debit cards, including Visa, MasterCard, American Express, and Discover. Additionally, we offer secure payment options like PayPal for your convenience."
+    },
+    {
+      "question": "4.Is my personal information safe when I book through your website?",
+      "answer": "Absolutely! We take the security and privacy of your information seriously. Our website uses advanced encryption technologies to protect your data, and we adhere to strict privacy policies. You can trust that your personal information is safe with us."
+    },
+    {
+      "question": "5.Do you offer travel insurance?",
+      "answer": "Yes, we offer travel insurance options to provide you with peace of mind during your trip. You can add travel insurance during the booking process or contact our customer support team for assistance."
+    },
+    {
+      "question": "6.How do I get my booking confirmation and travel documents?",
+      "answer": "Once your booking is confirmed, you will receive an email with your booking details and confirmation. You can access your travel documents, including e-tickets and hotel vouchers, by logging into your account on our website."
+    },
+    {
+      "question": "7.What should I do if I encounter issues during my trip, such as flight delays or hotel problems?",
+      "answer": "In case of any issues during your trip, please contact our 24/7 customer support team. We are here to assist you and can provide guidance and support to resolve any travel-related problems."
+    },
+    {
+      "question": "8.Can I cancel my booking, and what is the cancellation policy?",
+      "answer": "Yes, you can cancel your booking, but the cancellation policy varies depending on the service provider (airline, hotel, etc.) and the type of fare or reservation you've chosen. Check the cancellation policy before booking, and if you need to cancel, contact our customer support team for assistance."
+    },
+    {
+      "question": "9.Are there any loyalty programs or discounts for frequent travelers?",
+      "answer": "Yes, we offer loyalty programs and special discounts for our frequent travelers. Join our loyalty program to earn rewards and enjoy exclusive perks. Keep an eye on our website for limited-time promotions and discounts as well."
+    },
+    {
+      "question": "10.How can I contact customer support if I have further questions or need assistance?",
+      "answer": "You can reach our customer support team by phone, email, or through our website's live chat feature. Visit our 'Contact Us' page for all the contact details and operating hours."
+    }
+  ]
+
+
+  return(
+    <div id="accordion">
+       {faqData.map((item,index)=>(
+          <FAQItem key={index} question={item.question} answer={item.answer} index={index}/>
+       ))}
+    </div>
+  );
+}
+let root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<FAQ/>);
+
+</script>
+   
+</body>
+</html>
